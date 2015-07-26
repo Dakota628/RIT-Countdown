@@ -12,11 +12,9 @@ function init() {
 }
 
 function check() {
-    try {
-        if (clock != undefined && clock.getTime() <= 0) {
-            fireworks();
-        }
-    } catch(e) {}
+    if (clock.getTime !== undefined && clock.getTime() <= 0) {
+        fireworks();
+    }
 }
 
 function fireworks() {
