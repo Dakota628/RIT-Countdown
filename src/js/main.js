@@ -1,10 +1,13 @@
-var clock = $('#clock').FlipClock((new Date("8-18-2015") - new Date()) / 1000, {
-    clockFace: 'DailyCounter',
-    countdown: true,
-    callbacks: {
-        interval: check
-    }
-});
+function init() {
+    window.clock = jQuery('#clock').FlipClock((new Date(2015, 7, 18) - new Date()) / 1000, {
+        clockFace: 'DailyCounter',
+        countdown: true,
+        callbacks: {
+            interval: check
+        }
+    });
+    check();
+}
 
 function check() {
     if(clock != undefined && clock.getTime() <= 0) {
@@ -28,5 +31,6 @@ function fireworks() {
     }, 1000);
 }
 
-check();
-
+$( document ).ready(function() {
+    init();
+});
