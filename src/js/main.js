@@ -1,5 +1,7 @@
+var clock;
+
 function init() {
-    window.clock = jQuery('#clock').FlipClock((new Date(2015, 7, 18) - new Date()) / 1000, {
+    clock = new FlipClock($('#clock'), (new Date(2015, 7, 18) - new Date()) / 1000, {
         clockFace: 'DailyCounter',
         countdown: true,
         callbacks: {
@@ -10,9 +12,11 @@ function init() {
 }
 
 function check() {
-    if(clock != undefined && clock.getTime() <= 0) {
-        fireworks();
-    }
+    try {
+        if (clock != undefined && clock.getTime() <= 0) {
+            fireworks();
+        }
+    } catch(e) {}
 }
 
 function fireworks() {
@@ -22,7 +26,7 @@ function fireworks() {
 
     $('#logo').fadeTo(1400, .3, function() {
         $('#logo').attr("src", 'img/rit-white.png').fadeTo(800, 1);
-    })
+    });
     setTimeout(function() {
         Fireworks.initialize();
         $('#main').css('background', 'none').css('opacity', '.75');
