@@ -12,7 +12,7 @@ function init() {
 }
 
 function check() {
-    if (clock.getTime !== undefined && clock.getTime() <= 0) {
+    if (clock !== undefined && clock.getTime !== undefined && clock.getTime() <= 0) {
         fireworks();
     }
 }
